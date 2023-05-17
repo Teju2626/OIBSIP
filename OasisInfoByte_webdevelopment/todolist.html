@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1,max">
+	<title>Todo List</title>
+	<script src="https://kit.fontawesome.com/d2c619c2bc.js" crossorigin="anonymous"></script>
+	<style type="text/css">
+        @import url('https://fonts.googleapis.com/css2?family=Merriweather&family=Poppins:ital,wght@0,100;1,100&family=Sacramento&display=swap');
+		
+		*{
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+
+		}
+		body{
+			height: 100vh;
+			background-color:black;
+			color: white;
+
+            
+		}
+		.container{
+			position: relative;
+			width: 800px;
+			padding: 10px;
+			margin: 0 auto;
+
+            
+
+		}
+		
+		#task{
+			width: 100%;
+			display: flex;
+			padding: 10px 0;
+            
+            
+		}
+		#task  input[type="text"]{
+			width: 90%;
+			color:white;
+			border: none;
+            border-bottom: 2px solid #666;
+            background: none;
+            padding: 10px;
+            font-size: 22px;
+            outline: none;
+            margin-left: 20px;
+            font-size: 25px;
+            font-weight: 500;
+
+
+ 
+		}
+		#task button{
+			margin: 0 10px;
+			background:#89C4E1;
+			color: white;
+			font-size: 18px;
+			text-transform: uppercase;
+			padding: 10px;
+			border: none;
+			outline: none;
+			border-radius: 5px;
+		    cursor: pointer;
+            
+           
+
+		}
+		#notfinished #finished{
+			margin:10px 0;
+			padding: 20px;
+           
+		}
+      
+		h3{
+			font-size: 28px;
+			text-transform: uppercase;
+			text-align: center;
+			color: white;
+			margin-top: 30px;
+			margin-bottom: 70px;
+		}
+		ol{
+		list-style: none;
+		counter-reset: mycounter;
+
+		}
+		ol li{
+			width: 100%;
+			padding: 18px;
+			margin: 5px 0;
+			background:#D4ADFC;
+			font-size: 25px;
+			counter-increment: my-counter;
+		}
+		ol#finished li{
+			
+			background:#50D890 ;
+		}
+		ol li::before{
+			content: counter(my-counter);
+			background: #231381;
+			width: 2rem;
+			height: 2rem;
+			border-radius: 50%;
+			display: inline-block;
+			line-height: 2rem;
+			text-align: center;
+			color: white;
+			margin-right: 0.5rem;
+		}
+		li button{
+			float: right;
+			padding: 5px;
+			font-size: 28px;
+			line-height: 28px;
+			margin-right: 15px;
+			background: none;
+			border: none;
+			outline: none;
+			cursor: pointer;
+		}
+        .part{
+            margin-top: 20px;
+            margin-bottom: 70px;
+            margin-left: auto;
+            margin-right: auto;
+            text-align: center;
+            border: 2px solid white;
+            border-top-left-radius: 10px;
+            border-bottom-right-radius: 10px;
+            height: 70px;
+            width: 800px;
+            padding-top: 15px;
+            font-family: sans-serif;
+
+
+
+
+        }
+       
+		
+
+
+	</style>
+	<script type="text/javascript">
+
+	  const inputs=document.querySelector('input');
+      const btns=document.getElementById("adds");
+      
+	  let i=0;
+	  let j=0;
+	  let k=0;
+	function add(){
+		console.log("10");
+		const inputs=document.querySelector('input');
+
+		const notfinish=document.querySelector('#Notfinished');
+		const finish=document.querySelector('#finished');
+		const newli=document.createElement('li');
+		const checkbtn=document.createElement('button');
+		const delbtn=document.createElement('button');
+        const editbtn=document.createElement('button');
+        editbtn.innerHTML='<i class="fa fa-pen"></i>';
+		checkbtn.innerHTML='<i class="fa fa-check"></i>';
+		delbtn.innerHTML='<i class="fa fa-trash"></i>';
+		if(inputs.value!==''){
+		notfinish.appendChild(newli)
+		newli.textContent=inputs.value;
+		inputs.value='';
+		newli.appendChild(checkbtn);
+		newli.appendChild(delbtn);
+        newli.appendChild(editbtn);
+		i=i+1;
+       }
+		checkbtn.addEventListener('click',function(){
+			const parent=this.parentNode;
+            parent.remove(newli);
+			finish.appendChild(parent);
+			checkbtn.style.display='none';
+		});
+		delbtn.addEventListener('click',function(){
+			const parent=this.parentNode;
+			parent.remove(newli);
+
+		});
+        editbtn.addEventListener('click',function(){
+            parent=this.parentNode;
+            const b=document.getElementById('task');
+            const oldbtn=document.getElementById('adds');
+            const newbtn=document.createElement('button');
+            newbtn.innerHTML="Save";
+            b.removeChild(oldbtn);
+            b.appendChild(newbtn);
+            inputs.value=parent.textContent;
+            
+            newbtn.addEventListener('click',function(){
+                set=inputs.value;
+                let t=document.createTextNode(set);
+                parent.innerText=" ";
+               
+                let notfinish=document.querySelector('#Notfinished');
+		        let finish=document.querySelector('#finished');
+                if(notfinish==parent.parentNode){
+                parent.appendChild(t);
+                parent.appendChild(checkbtn);
+                parent.appendChild(delbtn);
+                parent.appendChild(editbtn);
+               }
+                else{
+                    parent.appendChild(t); 
+                    parent.appendChild(delbtn);
+                    parent.appendChild(editbtn);
+               }
+                b.removeChild(newbtn);
+                b.appendChild(oldbtn);
+                inputs.value=" ";
+                
+            })
+
+        })
+	}
+	
+
+		
+	</script>
+</head>
+
+<body>
+<div class="container">
+	
+    <div class="part">
+    <h1>To-Do List Web App</h1>
+    </div>
+	<div id="task">
+		<input type="text" name="task" placeholder="Add a Task">
+		<button id="adds" onclick="add()">Add</button>
+	</div>
+	<div id="part1">
+   
+	<ol id="Notfinished">
+        <div id="part1">
+		<h3>Pending Tasks</h3>
+    </div>
+		
+	</ol>
+   
+   
+	<ol id="finished">
+        <div id="part2">
+		<h3>Finished Tasks</h3>
+        <div id="part2">
+		
+	</ol>
+	</div>
+</div>
+	
+</body>
+</html>

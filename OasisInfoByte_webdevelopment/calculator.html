@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Calculator</title>
+<style type="text/css">
+		@import url('https://fonts.googleapis.com/css2?family=Merriweather&family=Poppins:ital,wght@0,100;1,100&family=Sacramento&display=swap');
+	
+	*{
+		margin: 0px;
+		padding: 0px;
+		box-sizing: border-box;
+	}
+
+	#main{
+		margin-top: 50px;
+		margin-left: auto;
+		margin-right: auto;
+		background-color:#146C94;
+		height: 700px;
+		width: 1000px;
+	}
+	.container{
+     background-color:white;
+     width: 500px;
+     height: 600px;
+     position: absolute;
+     margin-top: 50px;
+     border-radius: 15px;	
+     border: none;
+     outline: none;
+     margin-left: 240px;
+
+
+	}
+	.part1{
+		position: absolute;
+		margin-top: 30px;
+		margin-left: 40px;
+	}
+	.part1 #display{
+		height: 90px;
+		width: 400px;
+		border-radius: 10px;
+		outline: none;
+		border: none;
+		margin-left: 10px;
+		margin-bottom: 10px;
+		font-size: 30px;
+		text-align: end;
+		padding-right: 15px;
+		background-color: #B0DAFF;
+	}
+	.btn{
+		height: 70px;
+		margin-top: 10px;
+		margin-left: 10px;
+		border-radius: 5px;
+		border: none;
+		outline: none;
+        width: 70px;
+		font-size: 20px;
+	}
+	
+
+</style>
+<script type="text/javascript">
+	function pg(num){
+		 if(num =='='){
+                var a = document.getElementById("display").value;  
+                document.getElementById("display").value=eval(a);  
+
+
+                }
+                else{
+               src=document.getElementById("display");
+		       src.value+=num;
+
+            };
+                
+		
+
+	};
+	function back(){
+		src=document.getElementById("display");
+		var val=document.getElementById("display").value;
+	    src.value=val.slice(0,-1)
+
+	}
+	
+	function clears(){
+		src=document.getElementById("display");
+		src.value=" ";
+
+		
+	}
+	function sq(){
+		src=document.getElementById("display");
+		src.value=Math.sqrt(document.getElementById("display").value,1/2);
+	}
+	
+	function clicks(){
+		console.log(10);
+		var a = document.getElementById("display").value;  
+        if(parseInt(a)>0){
+			document.getElementById("display").value=parseInt(a)*-1;
+		}
+		else{
+			document.getElementById("display").value=parseInt(a)*-1;
+
+		}
+	}
+</script>
+</head>
+
+<body>
+	<div id="main">
+	
+	<div class="container">
+       <div class="part1">
+		<div class="part11">
+
+			<form>
+				<input id="display" type="text" name="text">
+			</form>
+		</div>
+		
+		
+			<div class="button1">
+				<table>
+			<tr>
+                <td><button class="btn"style="background-color: #85CDFD;" onclick="pg('&#40')" >&#40</button></td>
+                <td><button  class="btn" style="background-color: #85CDFD;" onclick="pg('&#41')" >&#41</button></td>
+                 <td><button class="btn" style="background-color: #85CDFD;"  onclick="pg('=')">ans</button></td>
+                <td><button  class="btn" style="background-color: #85CDFD;" onclick="back()" >del</button></td>
+                <td><button  class="btn" style="background-color: #85CDFD;" onclick="clears()" >clear</button></td>
+            </tr>
+			</table>
+        
+		</div>
+		<div class="button2">
+		<table>
+			<tr>
+                <td><button class="btn" style="background-color:#E3F6FF ;" onclick="pg('7')" >7</button></td>
+                <td><button  class="btn" style="background-color:#E3F6FF ;"  onclick="pg('8')" >8</button></td>
+                <td><button class="btn" style="background-color:#E3F6FF ;"  onclick="pg('9')" >9</button></td>
+                <td><button   class="btn" style="background-color: #85CDFD;" onclick="pg('%')" >%</button></td>
+                <td><button class="btn"  style="background-color: #85CDFD;"  onclick="sq()">&radic;</button></td>
+            </tr>
+			
+				
+			</table>
+        
+		</div>
+		<div class="button3">
+		<table>
+			<tr>
+                <td><button class="btn"  style="background-color:#E3F6FF ;" onclick="pg('4')" >4</button></td>
+                <td><button class="btn"  style="background-color:#E3F6FF ;" onclick="pg('5')" >5</button></td>
+                <td><button class="btn"  style="background-color:#E3F6FF ;" onclick="pg('6')" >6</button></td>
+                <td><button class="btn"  style="background-color: #85CDFD;" onclick="pg('*')" >×</button></td>
+                <td><button class="btn"  style="background-color: #85CDFD;" onclick="pg('/')" >÷</button></td>
+            </tr>
+        </table>
+		</div>
+		<div class="button4">
+		<table>
+			<tr>
+                <td><button class="btn" style="background-color:#E3F6FF ;" onclick="pg('1')" >1</button></td>
+                <td><button class="btn"   style="background-color:#E3F6FF ;" onclick="pg('2')" >2</button></td>
+                <td><button class="btn" style="background-color:#E3F6FF ;" onclick="pg('3')" >3</button></td>
+                <td><button  class="btn"style="background-color: #85CDFD;" onclick="pg('+')" >+</button></td>
+                 <td><button class="btn" style="background-color: #85CDFD;"  onclick="pg('-')" >-</button></td>
+            </tr>
+			</table>
+      
+		</div>
+		<div class="button5">
+		<table>
+			<tr>
+                <td><button class="btn" style="background-color: #85CDFD;" onclick="pg('.')" >.</button></td>
+                <td><button class="btn"  style="background-color:#E3F6FF ;" onclick="pg('0')" >0</button></td>
+                <td><button  class="btn" style="background-color: #85CDFD;" onclick="clicks()" >±</button></td>
+				<td><button style="background-color: #146C94;width:150px ;height:70px;margin-left: 10px;border: none;outline: none;border-radius: 5px;margin-top: 9px;font-size: 20px; color: white;" onclick="pg('=')" >Enter</button></td>
+            </tr>
+       </table>
+    </div>
+
+</div>
+</div>
+               
+</body>
+</html>
